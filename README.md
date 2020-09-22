@@ -20,16 +20,16 @@ The implementation of the algorithms are based on those papers and libraries:
 
 ## Installing PyTSMod
 
-PyTSMod is not hosted on PyPI now. To install, run the following command in your Python environment:
+PyTSMod is hosted on PyPI. To install, run the following command in your Python environment:
 
 ```bash
-$ pip install git+https://github.com/KAIST-MACLab/PyTSMod.git
+$ pip install pytsmod
 ```
 
-Or you can simply clone the repository and setup it from the top-level folder:
+Or if you use [poetry](https://python-poetry.org), you can clone the repository and build the package through the following command:
 
 ```bash
-$ python setup.py install
+$ poetry build
 ```
 
 ### Requirements
