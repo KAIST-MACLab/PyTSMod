@@ -1,6 +1,6 @@
 from librosa.effects import hpss
-from pytsm import phase_vocoder
-from pytsm import ola
+from .pvtsm import phase_vocoder
+from .olatsm import ola
 
 
 def hptsm(x, s, hp_kernel_size=31, hp_power=2.0, hp_mask=False, hp_margin=1.0,
