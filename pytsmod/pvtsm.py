@@ -43,7 +43,7 @@ def phase_vocoder(x, s, win_type='sin', win_size=2048, syn_hop_size=512,
     """
     # validate the input audio and scale factor.
     x = _validate_audio(x)
-    anc_points = _validate_scale_factor(s)
+    anc_points = _validate_scale_factor(x, s)
 
     n_chan = x.shape[0]
     output_length = int(anc_points[-1, -1]) + 1
@@ -207,7 +207,7 @@ def _find_peaks(spec):
         return peaks, np.empty(0)
 
     # Find region of influence. Axis 0 represents start and end each.
-    infl_region = np.zeros(2, peaks.shape)
+    infl_region = np.zeros((2, peaks.size))
     infl_region[0, 0] = 0
     infl_region[0, 1:] = np.ceil((peaks[1:] + peaks[: -1]) / 2)
     infl_region[1, : -1] = infl_region[0, 1:] - 1

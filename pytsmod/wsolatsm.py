@@ -39,7 +39,7 @@ def wsola(x, s, win_type='hann',
     """
     # validate the input audio and scale factor.
     x = _validate_audio(x)
-    anc_points = _validate_scale_factor(s)
+    anc_points = _validate_scale_factor(x, s)
 
     n_chan = x.shape[0]
     output_length = int(anc_points[-1, -1]) + 1
