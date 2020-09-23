@@ -1,6 +1,7 @@
 import numpy as np
 
 from .utils import win as win_func
+from .utils import _validate_audio, _validate_f0
 
 
 def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
@@ -38,85 +39,50 @@ def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
     y : numpy.ndarray [shape=(channel, num_samples) or (num_samples)]
         the modified output audio sequence.
     """
-
-    if x.ndim == 1:  # make mono source to 2D array with a single row.
-        x = np.expand_dims(x, 0)
-    elif x.ndim > 2:
-        raise Exception("Please use the valid audio source. "
-                        + "Number of dimension of input should be less than 3.")
-
-    if src_f0.ndim == 1:
-        src_f0 = np.expand_dims(src_f0, 0)
-    elif src_f0.ndim == 2:
-        if x.shape[0] != src_f0.shape[0] and src_f0.shape[0] != 1:
-            raise Exception("The number of channels of source f0 value "
-                            + "should 1 or same as the source.")
-    elif src_f0.ndim > 2:
-        raise Exception("Please use the valid source f0 value. "
-                        + "Number of dimension of source f0 "
-                        + "should be less than 3.")
-
-    # Check if system uses target_f0 or beta.
-    if (tgt_f0 is None) and beta is None:
+    # validate the input audio, input pitch and scale factor.
+    x = _validate_audio(x)
+    src_f0 = _validate_f0(x, src_f0)
+    if tgt_f0 is not None:
+        if beta is not None:
+            raise Exception("You cannot use both tgt_f0 and beta as an input.")
+        tgt_f0 = _validate_f0(x, tgt_f0)
+    elif beta is None:
         beta = 1
-    elif beta is None:  # Uses target_f0
-        if tgt_f0.ndim == 1:
-            tgt_f0 = np.expand_dims(tgt_f0, 0)
-        elif tgt_f0.ndim == 2:
-            if x.shape[0] != tgt_f0.shape[0] and tgt_f0.shape[0] != 1:
-                raise Exception("The number of channels of target f0 value "
-                                + "should 1 or same as the source.")
-        elif tgt_f0.ndim > 2:
-            raise Exception("Please use the valid target f0 value. "
-                            + "Number of dimension of target f0 "
-                            + "should be less than 3.")
-    elif (tgt_f0 is not None) and (beta is not None):
-        raise Exception("You cannot use both target_f0 and beta as an input.")
-    elif not np.isscalar(beta):
-        raise Exception("The beta value should be a scalar.")
 
-    n_channels = x.shape[0]
+    n_chan = x.shape[0]
     output_length = int(np.ceil(x.shape[1] * alpha))
-    y = np.zeros((n_channels, output_length))
+    y = np.zeros((n_chan, output_length))
 
     for c, x_chan in enumerate(x):
-        if src_f0.ndim == 1:
-            src_f0_chan = src_f0
-        else:
-            src_f0_chan = src_f0[c]
-
+        src_f0_chan = src_f0[c]
         src_f0_chan[np.isnan(src_f0_chan)] = 0
         pm_chan = _find_pitch_marks(x_chan, sr, src_f0_chan, p_hop_size,
                                     p_win_size)
-
-        if tgt_f0 is not None:
-            if tgt_f0.ndim == 1:
-                tgt_f0_chan = tgt_f0
-            else:
-                tgt_f0_chan = tgt_f0[c]
-            beta = _target_f0_to_beta(x_chan, pm_chan,
-                                      src_f0_chan, tgt_f0_chan)
-
         pitch_period = np.diff(pm_chan)  # compute pitch periods
 
-        # make beta to an array if beta is a fixed value.
-        if np.isscalar(beta):
-            beta = np.ones(pitch_period.size) * beta
+        if tgt_f0 is not None:
+            tgt_f0_chan = tgt_f0[c]
+            beta_seq = _target_f0_to_beta(x_chan, pm_chan,
+                                          src_f0_chan, tgt_f0_chan)
+        else:
+            beta_seq = np.ones(pitch_period.size) * beta
 
         if pm_chan[0] <= pitch_period[0]:  # remove first pitch mark
             pm_chan = pm_chan[1:]
             pitch_period = pitch_period[1:]
-            beta = beta[1:]
+            beta_seq = beta_seq[1:]
 
         if pm_chan[-1] + pitch_period[-1] > x_chan.size:  # remove last pitch mark
             pm_chan = pm_chan[: -1]
         else:
             pitch_period = np.append(pitch_period, pitch_period[-1])
-            beta = np.append(beta, beta[-1])
+            beta_seq = np.append(beta_seq, beta_seq[-1])
 
-        output_length = int(np.ceil(x.size * alpha))
-        x_chan = np.pad(x_chan, (1024, 1024))
-        y_chan = np.zeros(output_length + 2 * 1024)  # output signal
+        output_length = int(np.ceil(x_chan.size * alpha))
+
+        pad = int(np.ceil(sr / 100))
+        x_chan = np.pad(x_chan, (pad, pad))
+        y_chan = np.zeros(output_length + 2 * pad)  # output signal
 
         tk = pitch_period[0] + 1  # output pitch mark
         ow = np.zeros(y_chan.shape)
@@ -131,19 +97,19 @@ def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
             st = pm_chan[i] - pit
             en = pm_chan[i] + pit
 
-            gr = x_chan[st + 1024: en + 1024 + 1] * win
+            gr = x_chan[st + pad: en + pad + 1] * win
 
-            ini_gr = round(tk) - pit + 1024
-            end_gr = round(tk) + pit + 1024
+            ini_gr = round(tk) - pit + pad
+            end_gr = round(tk) + pit + pad
 
             y_chan[ini_gr: end_gr + 1] = y_chan[ini_gr: end_gr + 1] + gr
             ow[ini_gr: end_gr + 1] = ow[ini_gr: end_gr + 1] + win
-            tk = tk + pit / beta[i]
+            tk = tk + pit / beta_seq[i]
 
         ow[ow < 1e-3] = 1
 
         y_chan = y_chan / ow
-        y_chan = y_chan[1024:]
+        y_chan = y_chan[pad:]
         y_chan = y_chan[: output_length]
         y[c, :] = y_chan
 
