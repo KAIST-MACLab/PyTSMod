@@ -1,8 +1,7 @@
 import numpy as np
 from scipy.interpolate import interp1d
 from .utils import win as win_func
-
-from warnings import warn
+from .utils import _validate_audio, _validate_scale_factor
 
 
 def wsola(x, s, win_type='hann',
@@ -38,26 +37,14 @@ def wsola(x, s, win_type='hann',
     y : numpy.ndarray [shape=(channel, num_samples) or (num_samples)]
         the modified output audio sequence.
     """
-    win = win_func(win_type=win_type, win_size=win_size, zero_pad=0)
-
-    if x.ndim == 1:  # make mono source to 2D array with a single row.
-        x = np.expand_dims(x, 0)
-    elif x.ndim > 2:
-        raise Exception("Please use the valid audio source. "
-                        + "Number of dimension of input should be less than 3.")
-
-    if np.isscalar(s):
-        anc_points = np.array([[0, np.shape(x)[1] - 1],
-                               [0, np.ceil(s * np.shape(x)[1]) - 1]])
-    elif s.shape[0] == 2:
-        anc_points = s
-    else:
-        raise Exception('Please use the valid anchor points. '
-                        + '(scalar or pair of input/output sample points)')
-
-    output_length = int(anc_points[-1, -1]) + 1
+    # validate the input audio and scale factor.
+    x = _validate_audio(x)
+    anc_points = _validate_scale_factor(s)
 
     n_chan = x.shape[0]
+    output_length = int(anc_points[-1, -1]) + 1
+
+    win = win_func(win_type=win_type, win_size=win_size, zero_pad=0)
 
     sw_pos = np.arange(0, output_length + win_size // 2, syn_hop_size)
     ana_interpolated = interp1d(anc_points[1, :], anc_points[0, :],
@@ -69,6 +56,7 @@ def wsola(x, s, win_type='hann',
 
     min_fac = np.min(syn_hop_size / ana_hop[1:])
 
+    # padding the input audio sequence.
     left_pad = int(win_size // 2 + tolerance)
     right_pad = int(np.ceil(1 / min_fac) * win_size + tolerance)
     x_padded = np.pad(x, ((0, 0), (left_pad, right_pad)))
