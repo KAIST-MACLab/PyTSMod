@@ -34,7 +34,7 @@ $ poetry build
 
 ### Requirements
 
-To use PyTSMod, following packages are required.
+To use PyTSMod, Python with version >= 3.4 and following packages are required.
 - NumPy (>=1.13.0)
 - SciPy (>=1.0.0)
 - libROSA
