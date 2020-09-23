@@ -39,7 +39,8 @@ def _validate_scale_factor(audio, s):
     Parameters
     ----------
 
-    audio : numpy.ndarray [shape=(num_channels, num_samples)]
+    audio : numpy.ndarray [shape=(num_channels, num_samples) or (num_samples)
+                           or (num_samples, num_channels)]
             the input audio sequence.
     s : number > 0 [scalar]
         or numpy.ndarray [shape=(2, num_points) or (num_points, 2)]
@@ -73,3 +74,46 @@ def _validate_scale_factor(audio, s):
                         + '(scalar or pair of input/output sample points)')
 
     return anc_points
+
+
+def _validate_f0(audio, f0):
+    """Validate the input f0 is suitable for input audio.
+
+    Parameters
+    ----------
+
+    audio : numpy.ndarray [shape=(num_channels, num_samples) or (num_samples)
+                           or (num_samples, num_channels)]
+            the input audio sequence.
+    f0 : numpy.ndarray [shape=(num_channels, num_pitches) or (num_pitches)
+                        or (num_pitches, num_channels)]
+         the f0 sequence that used for TD-PSOLA. If f0 is 1D array,
+         the f0 of all audio channels are regarded as the same f0.
+
+    Returns
+    -------
+
+    f0 : numpy.ndarray [shape=(num_channels, num_freqs)]
+         the f0 sequence that used for TD-PSOLA.
+    """
+    n_chan = audio.shape[0]
+
+    if f0.ndim == 1:
+        f0 = np.expand_dim(f0, 0)
+    elif f0.ndim == 2:
+        if f0.shape[0] == n_chan:
+            pass
+        elif f0.shape[1] == n_chan:
+            warn('it seems that the f0 has shape (num_pitches, num_channels). '
+                 + 'it is recommended to '
+                 + 'have shape (num_channels, num_pitches).', stacklevel=3)
+            f0 = f0.T
+        else:
+            raise Exception("The number of channels of f0 value "
+                            + "should 1 or same as the input audio.")
+    else:
+        raise Exception("Please use the valid f0 value. "
+                        + "Number of dimension of f0 "
+                        + "should be less than 3.")
+
+    return f0
