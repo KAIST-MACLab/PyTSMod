@@ -41,11 +41,11 @@ def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
     """
     # validate the input audio, input pitch and scale factor.
     x = _validate_audio(x)
-    src_f0 = _validate_f0(src_f0)
+    src_f0 = _validate_f0(x, src_f0)
     if tgt_f0 is not None:
         if beta is not None:
             raise Exception("You cannot use both tgt_f0 and beta as an input.")
-        tgt_f0 = _validate_f0(tgt_f0)
+        tgt_f0 = _validate_f0(x, tgt_f0)
     elif beta is None:
         beta = 1
 
