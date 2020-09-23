@@ -62,23 +62,23 @@ def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
 
         if tgt_f0 is not None:
             tgt_f0_chan = tgt_f0[c]
-            beta = _target_f0_to_beta(x_chan, pm_chan,
-                                      src_f0_chan, tgt_f0_chan)
+            beta_seq = _target_f0_to_beta(x_chan, pm_chan,
+                                          src_f0_chan, tgt_f0_chan)
         else:
-            beta = np.ones(pitch_period.size) * beta
+            beta_seq = np.ones(pitch_period.size) * beta
 
         if pm_chan[0] <= pitch_period[0]:  # remove first pitch mark
             pm_chan = pm_chan[1:]
             pitch_period = pitch_period[1:]
-            beta = beta[1:]
+            beta_seq = beta_seq[1:]
 
         if pm_chan[-1] + pitch_period[-1] > x_chan.size:  # remove last pitch mark
             pm_chan = pm_chan[: -1]
         else:
             pitch_period = np.append(pitch_period, pitch_period[-1])
-            beta = np.append(beta, beta[-1])
+            beta_seq = np.append(beta_seq, beta_seq[-1])
 
-        output_length = int(np.ceil(x.size * alpha))
+        output_length = int(np.ceil(x_chan.size * alpha))
 
         pad = int(np.ceil(sr / 100))
         x_chan = np.pad(x_chan, (pad, pad))
@@ -104,7 +104,7 @@ def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
 
             y_chan[ini_gr: end_gr + 1] = y_chan[ini_gr: end_gr + 1] + gr
             ow[ini_gr: end_gr + 1] = ow[ini_gr: end_gr + 1] + win
-            tk = tk + pit / beta[i]
+            tk = tk + pit / beta_seq[i]
 
         ow[ow < 1e-3] = 1
 
