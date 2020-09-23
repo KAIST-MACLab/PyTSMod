@@ -73,8 +73,3 @@ def _validate_scale_factor(audio, s):
                         + '(scalar or pair of input/output sample points)')
 
     return anc_points
-
-
-if __name__ == '__main__':
-    x = np.array([[1,2,3,4,5], [6,7,8,9,0]])
-    _validate_audio(x.T)
