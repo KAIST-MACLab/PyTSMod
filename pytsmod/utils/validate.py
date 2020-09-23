@@ -99,7 +99,7 @@ def _validate_f0(audio, f0):
     n_chan = audio.shape[0]
 
     if f0.ndim == 1:
-        f0 = np.expand_dim(f0, 0)
+        f0 = np.tile(f0, (n_chan, 1))
     elif f0.ndim == 2:
         if f0.shape[0] == n_chan:
             pass
