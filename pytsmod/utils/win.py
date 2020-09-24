@@ -28,7 +28,7 @@ def win(win_type='hann', win_size=4096, zero_pad=0):
     if win_type == 'hann':
         win = np.hanning(win_size)
     elif win_type == 'sin':
-        win = np.sin(np.pi * np.arange(win_size) / win_size)
+        win = np.sin(np.pi * np.arange(win_size) / (win_size - 1))
     else:
         raise Exception("Please use the valid window type. (hann, sin)")
 
