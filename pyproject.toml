@@ -7,8 +7,10 @@ authors = ["Sangeon Yong <koragon2@kaist.ac.kr>"]
 [tool.poetry.dependencies]
 python = "^3.6"
 numpy = "^1.19.2"
-nptyping = "^1.3.0"
-data-science-types = "^0.2.17"
+scipy = "^1.0.0"
+soundfile = "^0.10.1"
+# nptyping = "^1.3.0"
+# data-science-types = "^0.2.17"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
