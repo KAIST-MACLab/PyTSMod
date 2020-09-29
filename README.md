@@ -96,6 +96,18 @@ In this version, TD-PSOLA only supports the fixed time stretching factor alpha.
 
 You can modify pitch of the audio sequence in two ways. The first one is beta, which is the fixed pitch shifting factor. The other one is target_f0, which supports target pitch sequence you want to convert. You cannot use both of the parameters.
 
+### Using PyTSMod from the command line
+
+From version 0.3.0, this package includes a command-line tool named `tsmod`, which can create the result file easily from a shell. To generate the WSOLA result of `input.wav` with stretching factor 1.3 and save to `output.wav`, please run:
+
+```shell
+$ tsmod wsola input.wav output.wav 1.3  # ola, wsola, pv, pv_int are available.
+```
+
+Currently, OLA, WSOLA, and Phase Vocoder(PV) are supported. TD-PSOLA is excluded due to the difficulty of sending extracted pitch data to TD-PSOLA. Also, non-linear TSM is not supported in command-line.
+
+For more information, use `-h` or `--help` command to see the detailed usage of `tsmod`.
+
 ## Audio examples
 
 The original audio is from TSM toolbox.
