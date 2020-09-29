@@ -1,1 +1,5 @@
 poetry.lock
+dist
+.vscode
+.ipynb_checkpoints
+__pycache__

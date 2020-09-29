@@ -1,5 +1,7 @@
 PyTSMod
 ===================
+[![PyPI](https://img.shields.io/pypi/v/pytsmod.svg)](https://pypi.python.org/pypi/pytsmod)
+[![Build Status](https://travis-ci.org/KAIST-MACLab/PyTSMod.svg?branch=master)](https://travis-ci.org/KAIST-MACLab/PyTSMod)
 
 PyTSMod is a open-source library for Time-Scale Modification algorithms in Python 3. PyTSMod contains basic TSM algorithms such as Overlap-Add (OLA), Waveform-Similarity Overlap-Add (WSOLA), Time-Domain Pitch-Synchronous Overlap-Add (TD-PSOLA), and Phase Vocoder (PV-TSM). We are also planning to add more TSM algorithms and pitch shifting algorithms.
 
@@ -34,11 +36,11 @@ $ poetry build
 
 ### Requirements
 
-To use PyTSMod, following packages are required.
-- NumPy (>=1.13.0)
+To use PyTSMod, Python with version >= 3.6 and following packages are required.
+- NumPy (>=1.16.0)
 - SciPy (>=1.0.0)
-- libROSA
-- soundfile
+- libROSA (>=0.8.0)
+- soundfile (>=0.10.0)
 
 ## Using PyTSMod
 
@@ -48,7 +50,7 @@ OLA, WSOLA, and PV-TSM can be imported as module to be used directly in Python. 
 
 ```python
 import numpy as np
-import PyTSMod as tsm
+import pytsmod as tsm
 import soundfile as sf  # you can use other audio load packages.
 
 x, sr = sf.read('/FILEPATH/AUDIOFILE.wav')
@@ -73,7 +75,7 @@ When using TD-PSOLA, the estimated pitch information of the source you want to m
 
 ```python
 import numpy as np
-import PyTSMod as tsm
+import pytsmod as tsm
 import crepe  # you can use other pitch tracking algorithms.
 import soundfile as sf  # you can use other audio load packages.
 

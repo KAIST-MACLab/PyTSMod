@@ -1,6 +1,6 @@
 import numpy as np
-from .utils import win as stft, istft
 from scipy.interpolate import interp1d
+from .utils import stft, istft, _validate_audio, _validate_scale_factor
 
 
 def phase_vocoder(x, s, win_type='sin', win_size=2048, syn_hop_size=512,
@@ -41,25 +41,12 @@ def phase_vocoder(x, s, win_type='sin', win_size=2048, syn_hop_size=512,
     y : numpy.ndarray [shape=(channel, num_samples) or (num_samples)]
         the modified output audio sequence.
     """
-
-    if x.ndim == 1:  # make mono source to 2D array with a single row.
-        x = np.expand_dims(x, 0)
-    else:
-        raise Exception("Please use the valid audio source. "
-                        + "Number of dimension of input should be less than 3.")
-
-    if np.isscalar(s):
-        anc_points = np.array([[0, np.shape(x)[1] - 1],
-                               [0, np.ceil(s * np.shape(x)[1]) - 1]])
-    elif s.shape[1] == 2:
-        anc_points = s
-    else:
-        raise Exception('Please use the valid anchorPoints. '
-                        + '(scalar or pair of input/output sample points)')
-
-    output_length = int(anc_points[-1, -1]) + 1
+    # validate the input audio and scale factor.
+    x = _validate_audio(x)
+    anc_points = _validate_scale_factor(x, s)
 
     n_chan = x.shape[0]
+    output_length = int(anc_points[-1, -1]) + 1
 
     sw_pos = np.arange(0, output_length + win_size // 2, syn_hop_size)
     ana_interpolated = interp1d(anc_points[1, :], anc_points[0, :],
@@ -153,16 +140,8 @@ def phase_vocoder_int(x, s, win_type='hann', win_size=2048, syn_hop_size=512,
     y : numpy.ndarray [shape=(channel, num_samples) or (num_samples)]
         the modified output audio sequence.
     """
-
-    if zero_pad is None:
-        zero_pad = s * win_size // 2
-
-    if x.ndim == 1:  # make mono source to 2D array with a single row.
-        x = np.expand_dims(x, 0)
-    elif x.ndim > 2:
-        raise Exception("Please use the valid audio source. "
-                        + "Number of dimension of input should be less than 3.")
-
+    # validate the input audio and scale factor.
+    x = _validate_audio(x)
     if np.isscalar(s) and isinstance(s, int) and s >= 1:
         anchor_points = np.array([[0, np.shape(x)[1] - 1],
                                   [0, np.ceil(s * np.shape(x)[1]) - 1]])
@@ -170,11 +149,12 @@ def phase_vocoder_int(x, s, win_type='hann', win_size=2048, syn_hop_size=512,
         raise Exception("Please use the valid stretching rate. "
                         + "(integer stretching factors larger than 0)")
 
+    if zero_pad is None:
+        zero_pad = s * win_size // 2
+
     output_length = int(anchor_points[-1, -1]) + 1
 
-    win_size_half = int(np.round(win_size / 2))
-
-    out_win_pos = np.arange(0, output_length + win_size_half, syn_hop_size)
+    out_win_pos = np.arange(0, output_length + win_size // 2, syn_hop_size)
     in_win_pos = ((out_win_pos - 1) / s + 1).astype(int)
 
     n_channels = x.shape[0]
@@ -227,10 +207,10 @@ def _find_peaks(spec):
         return peaks, np.empty(0)
 
     # Find region of influence. Axis 0 represents start and end each.
-    infl_region = np.zeros(2, peaks.shape)
+    infl_region = np.zeros((2, peaks.size))
     infl_region[0, 0] = 0
     infl_region[0, 1:] = np.ceil((peaks[1:] + peaks[: -1]) / 2)
     infl_region[1, : -1] = infl_region[0, 1:] - 1
-    infl_region[1, -1] = infl_region.shape[-1]
+    infl_region[1, -1] = spec.size - 1
 
     return peaks, infl_region.astype(int)
