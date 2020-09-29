@@ -172,7 +172,7 @@ def phase_vocoder_int(x, s, win_type='hann', win_size=2048, syn_hop_size=512,
 
         y[c, :] = y_chan
 
-    return y
+    return y.squeeze()
 
 
 def _find_peaks(spec):
