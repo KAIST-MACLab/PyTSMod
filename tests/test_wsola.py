@@ -12,13 +12,22 @@ import soundfile as sf
 @pytest.mark.parametrize('tolerance', [512, 1024])
 def test_wsola_fixed(alpha, win_type, win_size, syn_hop_size, tolerance):
     x, _ = sf.read('tests/data/castanetsviolin.wav')
-    wsola_fixed_rate = loadmat('tests/data/wsola_fixed_rate.mat')
+    matlab_results = loadmat('tests/data/wsola_fixed_rate.mat')['result']
 
     y = tsm.wsola(x, alpha, win_type, win_size, syn_hop_size, tolerance)
 
-    sample_name = (f'cas_{str(int(alpha * 100)).zfill(3)}_'
-                   + f'{win_type}_{win_size}_{syn_hop_size}_{tolerance}')
-    y_matlab = wsola_fixed_rate[sample_name].squeeze()
+    _, w = np.where(matlab_results[0, :] == np.array([[alpha]]))
+    matlab_results = matlab_results[:, w]
+    _, w = np.where(matlab_results[1, :] == np.array([[2 if win_type == 'hann' else 1]]))
+    matlab_results = matlab_results[:, w]
+    _, w = np.where(matlab_results[2, :] == np.array([[win_size]]))
+    matlab_results = matlab_results[:, w]
+    _, w = np.where(matlab_results[3, :] == np.array([[syn_hop_size]]))
+    matlab_results = matlab_results[:, w]
+    _, w = np.where(matlab_results[4, :] == np.array([[tolerance]]))
+    matlab_results = matlab_results[:, w]
+
+    y_matlab = matlab_results[5, :][0].squeeze()
     assert np.allclose(y, y_matlab)
 
 
