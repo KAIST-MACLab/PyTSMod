@@ -15,7 +15,7 @@ def test_console_default_params(algorithm):
     x, sr = sf.read(test_file)
     y = globals()[algorithm](x, alpha)
 
-    cmd = ['python', 'pytsmod/console.py', algorithm,
+    cmd = ['python', 'pytsmod/console/console.py', algorithm,
            test_file, 'temp_cli.wav', str(alpha)]
     if algorithm == 'pv_int':
         cmd.append('-fs')
@@ -42,7 +42,7 @@ def test_console_ola(alpha, win_type, win_size, syn_hop_size):
     y = ola(x, alpha, win_type=win_type, win_size=win_size,
             syn_hop_size=syn_hop_size)
 
-    cmd = ['python', 'pytsmod/console.py', 'ola',
+    cmd = ['python', 'pytsmod/console/console.py', 'ola',
            test_file, 'temp_cli.wav', str(alpha),
            '-wt', win_type, '-ws', str(win_size),
            '-sh', str(syn_hop_size)]
@@ -70,7 +70,7 @@ def test_console_wsola(alpha, win_type, win_size, syn_hop_size, tolerance):
     y = wsola(x, alpha, win_type=win_type, win_size=win_size,
               syn_hop_size=syn_hop_size, tolerance=tolerance)
 
-    cmd = ['python', 'pytsmod/console.py', 'wsola',
+    cmd = ['python', 'pytsmod/console/console.py', 'wsola',
            test_file, 'temp_cli.wav', str(alpha),
            '-wt', win_type, '-ws', str(win_size),
            '-sh', str(syn_hop_size), '-t', str(tolerance)]
@@ -104,7 +104,7 @@ def test_console_pv(alpha, win_type, win_size, syn_hop_size, zero_pad,
            restore_energy=restore_energy, fft_shift=fft_shift,
            phase_lock=phase_lock)
 
-    cmd = ['python', 'pytsmod/console.py', 'pv',
+    cmd = ['python', 'pytsmod/console/console.py', 'pv',
            test_file, 'temp_cli.wav', str(alpha),
            '-wt', win_type, '-ws', str(win_size),
            '-sh', str(syn_hop_size), '-z', str(zero_pad),
@@ -137,7 +137,7 @@ def test_console_pv_int(alpha, win_type, win_size, syn_hop_size, zero_pad,
            syn_hop_size=syn_hop_size, zero_pad=zero_pad,
            restore_energy=restore_energy, fft_shift=fft_shift)
 
-    cmd = ['python', 'pytsmod/console.py', 'pv',
+    cmd = ['python', 'pytsmod/console/console.py', 'pv',
            test_file, 'temp_cli.wav', str(alpha),
            '-wt', win_type, '-ws', str(win_size),
            '-sh', str(syn_hop_size), '-z', str(zero_pad),
