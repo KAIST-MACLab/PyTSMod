@@ -161,17 +161,16 @@ def lsee_mstft(X, syn_hop, win_type, win_size, zero_pad, fft_shift,
     w = win_func(win_type, win_size, zero_pad)
 
     win_len = len(w)
-    win_len_half = round(win_len / 2)
-    num_of_frames = X.shape[1]
-    win_pos = np.arange(num_of_frames) * syn_hop
+    n_frames = X.shape[1]
+    win_pos = np.arange(n_frames) * syn_hop
     signal_length = win_pos[-1] + win_len
 
     x = np.zeros(signal_length)
     ow = np.zeros(signal_length)
-    for i in range(num_of_frames):
+    for i in range(n_frames):
         curr_spec = X[:, i]
 
-        Xi = np.concatenate((curr_spec, np.flip(np.conj(curr_spec[1:-1]))))
+        Xi = np.append(curr_spec, np.flip(np.conj(curr_spec[1:-1])))
         xi = np.real(np.fft.ifft(Xi))
         if fft_shift:
             xi = np.fft.fftshift(xi)
@@ -183,13 +182,13 @@ def lsee_mstft(X, syn_hop, win_type, win_size, zero_pad, fft_shift,
             xiw_energy = np.sum(abs(xiw))
             xiw = xiw * (xi_energy / (xiw_energy + np.finfo(np.float).eps))
 
-        x[win_pos[i]: win_pos[i] + win_len] = x[win_pos[i]: win_pos[i] + win_len] + xiw
+        x[win_pos[i]: win_pos[i] + win_len] += xiw
 
-        ow[win_pos[i]: win_pos[i] + win_len] = ow[win_pos[i]: win_pos[i] + win_len] + np.power(w, 2)
+        ow[win_pos[i]: win_pos[i] + win_len] += np.power(w, 2)
 
-    ow[ow < pow(10, -3)] = 1  # avoid potential division by zero
+    ow[ow < 1e-3] = 1
     x = x / ow
 
-    x = x[win_len_half: - win_len_half + 1]
+    x = x[win_len // 2: - win_len // 2]
 
     return x

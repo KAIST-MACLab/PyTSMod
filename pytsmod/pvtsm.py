@@ -211,6 +211,6 @@ def _find_peaks(spec):
     infl_region[0, 0] = 0
     infl_region[0, 1:] = np.ceil((peaks[1:] + peaks[: -1]) / 2)
     infl_region[1, : -1] = infl_region[0, 1:] - 1
-    infl_region[1, -1] = infl_region.shape[-1]
+    infl_region[1, -1] = spec.size - 1
 
     return peaks, infl_region.astype(int)
