@@ -1,16 +1,14 @@
 import sys
 sys.path.append('./')
 
+import soundfile as sf
 from pytsmod import ola, wsola
 from pytsmod import phase_vocoder as pv
 from pytsmod import phase_vocoder_int as pv_int
 from pytsmod import __path__ as path
-from pathlib import Path
+
 import configparser
-import pkgutil
-# from pytsmod.console import *
 import argparse
-import soundfile as sf
 
 
 def run():
