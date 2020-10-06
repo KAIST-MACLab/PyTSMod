@@ -1,6 +1,8 @@
 from librosa.effects import hpss
+import numpy as np
 from .pvtsm import phase_vocoder
 from .olatsm import ola
+from .utils import _validate_audio
 
 
 def hptsm(x, s, hp_kernel_size=31, hp_power=2.0, hp_mask=False, hp_margin=1.0,
@@ -32,9 +34,16 @@ def hptsm(x, s, hp_kernel_size=31, hp_power=2.0, hp_mask=False, hp_margin=1.0,
     y : numpy.ndarray [shape=(channel, num_samples) or (num_samples)]
         the modified output audio sequence.
     """
+    x = _validate_audio(x)
+    x_harm = np.zeros(x.shape)
+    x_perc = np.zeros(x.shape)
 
-    x_harm, x_perc = hpss(x, kernel_size=hp_kernel_size, power=hp_power,
-                          mask=hp_mask, margin=hp_margin)
+    for c, x_chan in enumerate(x):
+        x_harm_chan, x_perc_chan = hpss(x_chan, kernel_size=hp_kernel_size,
+                                        power=hp_power, mask=hp_mask,
+                                        margin=hp_margin)
+        x_harm[c, :] = x_harm_chan
+        x_perc[c, :] = x_perc_chan
 
     y_harm = phase_vocoder(x_harm, s, win_type=pv_win_type,
                            win_size=pv_win_size, syn_hop_size=pv_syn_hop_size,
