@@ -4,85 +4,93 @@ sys.path.append('./')
 from pytsmod import ola, wsola
 from pytsmod import phase_vocoder as pv
 from pytsmod import phase_vocoder_int as pv_int
-from pytsmod.console import *
+from pytsmod import __path__ as path
+from pathlib import Path
+import configparser
+import pkgutil
+# from pytsmod.console import *
 import argparse
 import soundfile as sf
 
 
 def run():
-    parser = argparse.ArgumentParser(description=TSMOD_DESC)
-    subparsers = parser.add_subparsers(help=SUBPARSER_HELP,
-                                       dest='subparser_name')
+    c = configparser.ConfigParser()
+    c.read(path[0] + '/console/descs.conf')
+    c = c['DEFAULT']
+
+    a_parser = argparse.ArgumentParser(description=c['TSMOD_DESC'])
+    subparsers = a_parser.add_subparsers(help=c['SUBPARSER_HELP'],
+                                         dest='subparser_name')
 
     # create parser for OLA.
-    parser_ola = subparsers.add_parser('ola', help=OLA_HELP,
-                                       description=OLA_DESC)
-    parser_ola.add_argument('input_file', type=str, help=INPUT_HELP)
-    parser_ola.add_argument('output_file', type=str, help=OUTPUT_HELP)
-    parser_ola.add_argument('alpha', type=float, help=A_HELP)
+    parser_ola = subparsers.add_parser('ola', help=c['OLA_HELP'],
+                                       description=c['OLA_DESC'])
+    parser_ola.add_argument('input_file', type=str, help=c['INPUT_HELP'])
+    parser_ola.add_argument('output_file', type=str, help=c['OUTPUT_HELP'])
+    parser_ola.add_argument('alpha', type=float, help=c['A_HELP'])
     parser_ola.add_argument('--win_type', '-wt', default='hann', type=str,
-                            help=WT_HELP)
+                            help=c['WT_HELP'])
     parser_ola.add_argument('--win_size', '-ws', default=1024, type=int,
-                            help=WS_HELP)
+                            help=c['WS_HELP'])
     parser_ola.add_argument('--syn_hop_size', '-sh', default=512, type=int,
-                            help=SH_HELP)
+                            help=c['SH_HELP'])
 
     # create parser for WSOLA.
-    parser_wsola = subparsers.add_parser('wsola', help=WSOLA_HELP,
-                                         description=WSOLA_DESC)
-    parser_wsola.add_argument('input_file', type=str, help=INPUT_HELP)
-    parser_wsola.add_argument('output_file', type=str, help=OUTPUT_HELP)
-    parser_wsola.add_argument('alpha', type=float, help=A_HELP)
+    parser_wsola = subparsers.add_parser('wsola', help=c['WSOLA_HELP'],
+                                         description=c['WSOLA_DESC'])
+    parser_wsola.add_argument('input_file', type=str, help=c['INPUT_HELP'])
+    parser_wsola.add_argument('output_file', type=str, help=c['OUTPUT_HELP'])
+    parser_wsola.add_argument('alpha', type=float, help=c['A_HELP'])
     parser_wsola.add_argument('--win_type', '-wt', default='hann', type=str,
-                              help=WT_HELP)
+                              help=c['WT_HELP'])
     parser_wsola.add_argument('--win_size', '-ws', default=1024, type=int,
-                              help=WS_HELP)
+                              help=c['WS_HELP'])
     parser_wsola.add_argument('--syn_hop_size', '-sh', default=512, type=int,
-                              help=SH_HELP)
+                              help=c['SH_HELP'])
     parser_wsola.add_argument('--tolerance', '-t', default=512, type=int,
-                              help=TOL_HELP)
+                              help=c['TOL_HELP'])
 
     # create parser for phase-vocoder.
-    parser_pv = subparsers.add_parser('pv', help=PV_HELP,
-                                      description=PV_DESC)
-    parser_pv.add_argument('input_file', type=str, help=INPUT_HELP)
-    parser_pv.add_argument('output_file', type=str, help=OUTPUT_HELP)
-    parser_pv.add_argument('alpha', type=float, help=A_HELP)
+    parser_pv = subparsers.add_parser('pv', help=c['PV_HELP'],
+                                      description=c['PV_DESC'])
+    parser_pv.add_argument('input_file', type=str, help=c['INPUT_HELP'])
+    parser_pv.add_argument('output_file', type=str, help=c['OUTPUT_HELP'])
+    parser_pv.add_argument('alpha', type=float, help=c['A_HELP'])
     parser_pv.add_argument('--win_type', '-wt', default='sin', type=str,
-                           help=WT_HELP)
+                           help=c['WT_HELP'])
     parser_pv.add_argument('--win_size', '-ws', default=2048, type=int,
-                           help=WS_HELP)
+                           help=c['WS_HELP'])
     parser_pv.add_argument('--syn_hop_size', '-sh', default=512, type=int,
-                           help=SH_HELP)
+                           help=c['SH_HELP'])
     parser_pv.add_argument('--zero_pad', '-z', default=0, type=int,
-                           help=ZP_HELP)
+                           help=c['ZP_HELP'])
     parser_pv.add_argument('--restore_energy', '-e', action='store_true',
-                           help=RE_HELP)
+                           help=c['RE_HELP'])
     parser_pv.add_argument('--fft_shift', '-fs', action='store_true',
-                           help=FS_HELP)
+                           help=c['FS_HELP'])
     parser_pv.add_argument('--phase_lock', '-pl', action='store_true',
-                           help=PL_HELP)
+                           help=c['PL_HELP'])
 
     # create parser for phase-vocoder int.
-    parser_pvi = subparsers.add_parser('pv_int', help=PVI_HELP,
-                                       description=PVI_DESC)
-    parser_pvi.add_argument('input_file', type=str, help=INPUT_HELP)
-    parser_pvi.add_argument('output_file', type=str, help=OUTPUT_HELP)
-    parser_pvi.add_argument('alpha', type=int, help=A_PVI_HELP)
+    parser_pvi = subparsers.add_parser('pv_int', help=c['PVI_HELP'],
+                                       description=c['PVI_DESC'])
+    parser_pvi.add_argument('input_file', type=str, help=c['INPUT_HELP'])
+    parser_pvi.add_argument('output_file', type=str, help=c['OUTPUT_HELP'])
+    parser_pvi.add_argument('alpha', type=int, help=c['A_PVI_HELP'])
     parser_pvi.add_argument('--win_type', '-wt', default='hann', type=str,
-                            help=WT_HELP)
+                            help=c['WT_HELP'])
     parser_pvi.add_argument('--win_size', '-ws', default=2048, type=int,
-                            help=WS_HELP)
+                            help=c['WS_HELP'])
     parser_pvi.add_argument('--syn_hop_size', '-sh', default=512, type=int,
-                            help=SH_HELP)
+                            help=c['SH_HELP'])
     parser_pvi.add_argument('--zero_pad', '-z', default=None, type=int,
-                            help=ZP_HELP)
+                            help=c['ZP_HELP'])
     parser_pvi.add_argument('--restore_energy', '-e', action='store_true',
-                            help=RE_HELP)
+                            help=c['RE_HELP'])
     parser_pvi.add_argument('--fft_shift', '-fs', action='store_true',
-                            help=FS_HELP)
+                            help=c['FS_HELP'])
 
-    args = parser.parse_args()
+    args = a_parser.parse_args()
 
     x, sr = sf.read(args.input_file)
 
