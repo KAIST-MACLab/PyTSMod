@@ -1,3 +1,6 @@
+import sys
+sys.path.append('./')
+
 from pytsmod import ola, wsola
 from pytsmod import phase_vocoder as pv
 from pytsmod import phase_vocoder_int as pv_int
