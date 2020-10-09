@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pytsmod &mdash; PyTSMod 0.3.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="utils" href="utils.html" />
+    <link rel="prev" title="PyTSMod" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> PyTSMod
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">API documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pytsmod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyTSMod</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>pytsmod</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pytsmod.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pytsmod">
+<span id="pytsmod"></span><h1>pytsmod<a class="headerlink" href="#module-pytsmod" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="pytsmod.ola">
+<code class="sig-prename descclassname">pytsmod.</code><code class="sig-name descname">ola</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">s</span></em>, <em class="sig-param"><span class="n">win_type</span><span class="o">=</span><span class="default_value">'hann'</span></em>, <em class="sig-param"><span class="n">win_size</span><span class="o">=</span><span class="default_value">1024</span></em>, <em class="sig-param"><span class="n">syn_hop_size</span><span class="o">=</span><span class="default_value">512</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytsmod.ola" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify length of the audio sequence using OLA algorithm.
+WSOLA with zero tolerance is working same as OLA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">numpy.ndarray [shape=(channel, num_samples) or (num_samples)]</span></dt><dd><p>the input audio sequence to modify.</p>
+</dd>
+<dt><strong>s</strong><span class="classifier">number &gt; 0 [scalar] or numpy.ndarray [shape=(2, num_points)]</span></dt><dd><p>the time stretching factor. Either a constant value (alpha)
+or an 2 x n array of anchor points which contains the sample points
+of the input signal in the first row
+and the sample points of the output signal in the second row.</p>
+</dd>
+<dt><strong>win_type</strong><span class="classifier">str</span></dt><dd><p>type of the window function. hann and sin are available.</p>
+</dd>
+<dt><strong>win_size</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>size of the window function.</p>
+</dd>
+<dt><strong>syn_hop_size</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>hop size of the synthesis window.
+Usually half of the window size.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">numpy.ndarray [shape=(channel, num_samples) or (num_samples)]</span></dt><dd><p>the modified output audio sequence.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pytsmod.wsola">
+<code class="sig-prename descclassname">pytsmod.</code><code class="sig-name descname">wsola</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">s</span></em>, <em class="sig-param"><span class="n">win_type</span><span class="o">=</span><span class="default_value">'hann'</span></em>, <em class="sig-param"><span class="n">win_size</span><span class="o">=</span><span class="default_value">1024</span></em>, <em class="sig-param"><span class="n">syn_hop_size</span><span class="o">=</span><span class="default_value">512</span></em>, <em class="sig-param"><span class="n">tolerance</span><span class="o">=</span><span class="default_value">512</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytsmod.wsola" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify length of the audio sequence using WSOLA algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">numpy.ndarray [shape=(channel, num_samples) or (num_samples)]</span></dt><dd><p>the input audio sequence to modify.</p>
+</dd>
+<dt><strong>s</strong><span class="classifier">number &gt; 0 [scalar] or numpy.ndarray [shape=(2, num_points)]</span></dt><dd><p>the time stretching factor. Either a constant value (alpha)
+or an 2 x n array of anchor points which contains the sample points
+of the input signal in the first row
+and the sample points of the output signal in the second row.</p>
+</dd>
+<dt><strong>win_type</strong><span class="classifier">str</span></dt><dd><p>type of the window function. hann and sin are available.</p>
+</dd>
+<dt><strong>win_size</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>size of the window function.</p>
+</dd>
+<dt><strong>syn_hop_size</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>hop size of the synthesis window.
+Usually half of the window size.</p>
+</dd>
+<dt><strong>tolerance</strong><span class="classifier">int &gt;= 0 [scalar]</span></dt><dd><p>number of samples the window positions
+in the input signal may be shifted
+to avoid phase discontinuities when overlap-adding them
+to form the output signal (given in samples).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">numpy.ndarray [shape=(channel, num_samples) or (num_samples)]</span></dt><dd><p>the modified output audio sequence.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pytsmod.phase_vocoder">
+<code class="sig-prename descclassname">pytsmod.</code><code class="sig-name descname">phase_vocoder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">s</span></em>, <em class="sig-param"><span class="n">win_type</span><span class="o">=</span><span class="default_value">'sin'</span></em>, <em class="sig-param"><span class="n">win_size</span><span class="o">=</span><span class="default_value">2048</span></em>, <em class="sig-param"><span class="n">syn_hop_size</span><span class="o">=</span><span class="default_value">512</span></em>, <em class="sig-param"><span class="n">zero_pad</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">restore_energy</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">fft_shift</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">phase_lock</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytsmod.phase_vocoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify length of the audio sequence using Phase Vocoder algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">numpy.ndarray [shape=(channel, num_samples) or (num_samples)]</span></dt><dd><p>the input audio sequence to modify.</p>
+</dd>
+<dt><strong>s</strong><span class="classifier">number &gt; 0 [scalar] or numpy.ndarray [shape=(2, num_points)]</span></dt><dd><p>the time stretching factor. Either a constant value (alpha)
+or an 2 x n array of anchor points which contains the sample points
+of the input signal in the first row
+and the sample points of the output signal in the second row.</p>
+</dd>
+<dt><strong>win_type</strong><span class="classifier">str</span></dt><dd><p>type of the window function for the STFT.
+hann and sin are available.</p>
+</dd>
+<dt><strong>win_size</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>size of the window function.</p>
+</dd>
+<dt><strong>syn_hop_size</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>hop size of the synthesis window.
+Usually half of the window size.</p>
+</dd>
+<dt><strong>zero_pad</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>the size of the zero pad in the window function.</p>
+</dd>
+<dt><strong>restore_energy</strong><span class="classifier">bool</span></dt><dd><p>tries to reserve potential energy loss.</p>
+</dd>
+<dt><strong>fft_shift</strong><span class="classifier">bool</span></dt><dd><p>apply circular shift to STFT and ISTFT.</p>
+</dd>
+<dt><strong>phase_lock</strong><span class="classifier">bool</span></dt><dd><p>apply phase locking.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">numpy.ndarray [shape=(channel, num_samples) or (num_samples)]</span></dt><dd><p>the modified output audio sequence.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pytsmod.phase_vocoder_int">
+<code class="sig-prename descclassname">pytsmod.</code><code class="sig-name descname">phase_vocoder_int</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">s</span></em>, <em class="sig-param"><span class="n">win_type</span><span class="o">=</span><span class="default_value">'hann'</span></em>, <em class="sig-param"><span class="n">win_size</span><span class="o">=</span><span class="default_value">2048</span></em>, <em class="sig-param"><span class="n">syn_hop_size</span><span class="o">=</span><span class="default_value">512</span></em>, <em class="sig-param"><span class="n">zero_pad</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">restore_energy</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">fft_shift</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytsmod.phase_vocoder_int" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify length of the audio sequence using Phase Vocoder algorithm.
+Works specially well for integer stretching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">numpy.ndarray [shape=(channel, num_samples) or (num_samples)]</span></dt><dd><p>the input audio sequence to modify.</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>the time stretching factor.
+Only a integer value greater than 0 is allowed.</p>
+</dd>
+<dt><strong>win_type</strong><span class="classifier">str</span></dt><dd><p>type of the window function for the STFT.
+hann and sin are available.</p>
+</dd>
+<dt><strong>win_size</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>size of the window function.</p>
+</dd>
+<dt><strong>syn_hop_size</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>hop size of the synthesis window.
+Usually half of the window size.</p>
+</dd>
+<dt><strong>zero_pad</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>the size of the zero pad in the window function.</p>
+</dd>
+<dt><strong>restore_energy</strong><span class="classifier">bool</span></dt><dd><p>tries to reserve potential energy loss.</p>
+</dd>
+<dt><strong>fft_shift</strong><span class="classifier">bool</span></dt><dd><p>apply circular shift to STFT and ISTFT.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">numpy.ndarray [shape=(channel, num_samples) or (num_samples)]</span></dt><dd><p>the modified output audio sequence.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pytsmod.hptsm">
+<code class="sig-prename descclassname">pytsmod.</code><code class="sig-name descname">hptsm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">s</span></em>, <em class="sig-param"><span class="n">hp_kernel_size</span><span class="o">=</span><span class="default_value">31</span></em>, <em class="sig-param"><span class="n">hp_power</span><span class="o">=</span><span class="default_value">2.0</span></em>, <em class="sig-param"><span class="n">hp_mask</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">hp_margin</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">pv_win_type</span><span class="o">=</span><span class="default_value">'hann'</span></em>, <em class="sig-param"><span class="n">pv_win_size</span><span class="o">=</span><span class="default_value">2048</span></em>, <em class="sig-param"><span class="n">pv_syn_hop_size</span><span class="o">=</span><span class="default_value">512</span></em>, <em class="sig-param"><span class="n">pv_zero_pad</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pv_restore_energy</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">pv_fft_shift</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">pv_phase_lock</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">ola_win_type</span><span class="o">=</span><span class="default_value">'hann'</span></em>, <em class="sig-param"><span class="n">ola_win_size</span><span class="o">=</span><span class="default_value">256</span></em>, <em class="sig-param"><span class="n">ola_syn_hop_size</span><span class="o">=</span><span class="default_value">128</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytsmod.hptsm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify length of the audio sequence using both Phase Vocoder and OLA.
+Apply Phase Vocoder to harmonic signal, and apply OLA to percussive signal.
+For HPSS, median filter based algorithm is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">numpy.ndarray [shape=(channel, num_samples) or (num_samples)]</span></dt><dd><p>the input audio sequence to modify.</p>
+</dd>
+<dt><strong>s</strong><span class="classifier">number &gt; 0 [scalar] or numpy.ndarray [shape=(2, num_points)]</span></dt><dd><p>the time stretching factor. Either a constant value (alpha)
+or an 2 x n array of anchor points which contains the sample points
+of the input signal in the first row
+and the sample points of the output signal in the second row.</p>
+</dd>
+<dt><strong>hp_</strong><span class="classifier">parameters for HPSS.</span></dt><dd></dd>
+<dt><strong>pv_</strong><span class="classifier">parameters for phase vocoder.</span></dt><dd></dd>
+<dt><strong>ola_</strong><span class="classifier">parameters for OLA.</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">numpy.ndarray [shape=(channel, num_samples) or (num_samples)]</span></dt><dd><p>the modified output audio sequence.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pytsmod.tdpsola">
+<code class="sig-prename descclassname">pytsmod.</code><code class="sig-name descname">tdpsola</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">sr</span></em>, <em class="sig-param"><span class="n">src_f0</span></em>, <em class="sig-param"><span class="n">tgt_f0</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">beta</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">win_type</span><span class="o">=</span><span class="default_value">'hann'</span></em>, <em class="sig-param"><span class="n">p_hop_size</span><span class="o">=</span><span class="default_value">441</span></em>, <em class="sig-param"><span class="n">p_win_size</span><span class="o">=</span><span class="default_value">1470</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytsmod.tdpsola" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify length and pitch of the audio sequnce using TD-PSOLA algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">numpy.ndarray [shape=(channel, num_samples) or (num_samples)]</span></dt><dd><p>the input audio sequence to modify.</p>
+</dd>
+<dt><strong>sr</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>sample rate of the input audio sequence.</p>
+</dd>
+<dt><strong>src_f0</strong><span class="classifier">numpy.ndarray [shape=(channel, num_freqs) or (num_freqs)]</span></dt><dd><p>the fundamental frequency contour of the input audio sequence.</p>
+</dd>
+<dt><strong>tgt_f0</strong><span class="classifier">numpy.ndarray [shape=(channel, num_freqs) or (num_freqs)]</span></dt><dd><p>the target fundamental frequency contour
+you want to modify the input audio sequence.
+Should not be used with beta.</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">number &gt; 0 [scalar]</span></dt><dd><p>time stretching factor.</p>
+</dd>
+<dt><strong>beta</strong><span class="classifier">number &gt; 0 [scalar]</span></dt><dd><p>the pitch shifting factor. should not be used with target_f0.</p>
+</dd>
+<dt><strong>win_type</strong><span class="classifier">str</span></dt><dd><p>type of the window function. hann and sin are available.</p>
+</dd>
+<dt><strong>p_hop_size</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>the hop size of src_f0 (in samples).</p>
+</dd>
+<dt><strong>p_win_size</strong><span class="classifier">int &gt; 0 [scalar]</span></dt><dd><p>the window size of pitch tracking algorithm
+you used. (in samples).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">numpy.ndarray [shape=(channel, num_samples) or (num_samples)]</span></dt><dd><p>the modified output audio sequence.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="utils.html" class="btn btn-neutral float-right" title="utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="PyTSMod" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Sangeon Yong
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
