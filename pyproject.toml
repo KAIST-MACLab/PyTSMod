@@ -17,6 +17,7 @@ librosa = "^0.8"
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
 flake8 = "^3.8.3"
+numpydoc = "^1.0.0"
 
 [tool.poetry.scripts]
 tsmod = 'pytsmod.console:run'
