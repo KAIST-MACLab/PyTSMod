@@ -8,7 +8,7 @@ def _validate_audio(audio):
     Parameters
     ----------
 
-    audio : numpy.ndarray [shape=(channel, num_samples) or (num_samples)
+    audio : numpy.ndarray [shape=(channel, num_samples) or (num_samples)\
                            or (num_samples, channel)]
             the input audio sequence to validate.
 
@@ -39,11 +39,11 @@ def _validate_scale_factor(audio, s):
     Parameters
     ----------
 
-    audio : numpy.ndarray [shape=(num_channels, num_samples) or (num_samples)
-                           or (num_samples, num_channels)]
+    audio : numpy.ndarray [shape=(num_channels, num_samples) \
+                           or (num_samples) or (num_samples, num_channels)]
             the input audio sequence.
-    s : number > 0 [scalar]
-        or numpy.ndarray [shape=(2, num_points) or (num_points, 2)]
+    s : number > 0 [scalar] or numpy.ndarray [shape=(2, num_points) \
+        or (num_points, 2)]
         the time stretching factor. Either a constant value (alpha)
         or an (2 x n) (or (n x 2)) array of anchor points
         which contains the sample points of the input signal in the first row
@@ -82,11 +82,11 @@ def _validate_f0(audio, f0):
     Parameters
     ----------
 
-    audio : numpy.ndarray [shape=(num_channels, num_samples) or (num_samples)
-                           or (num_samples, num_channels)]
+    audio : numpy.ndarray [shape=(num_channels, num_samples) or \
+                           (num_samples) or (num_samples, num_channels)]
             the input audio sequence.
-    f0 : numpy.ndarray [shape=(num_channels, num_pitches) or (num_pitches)
-                        or (num_pitches, num_channels)]
+    f0 : numpy.ndarray [shape=(num_channels, num_pitches) or \
+                        (num_pitches) or (num_pitches, num_channels)]
          the f0 sequence that used for TD-PSOLA. If f0 is 1D array,
          the f0 of all audio channels are regarded as the same f0.
 
