@@ -1,9 +1,17 @@
 PyTSMod
 ===================
 [![PyPI](https://img.shields.io/pypi/v/pytsmod.svg)](https://pypi.python.org/pypi/pytsmod)
-[![Build Status](https://travis-ci.org/KAIST-MACLab/PyTSMod.svg?branch=main)](https://travis-ci.org/KAIST-MACLab/PyTSMod)
+[![Build Status](https://img.shields.io/travis/KAIST-MACLab/PyTSMod/main)](https://travis-ci.org/KAIST-MACLab/PyTSMod)
+![Python](https://img.shields.io/pypi/pyversions/pytsmod.svg)
+![license](https://img.shields.io/github/license/KAIST-MACLab/PyTSMod.svg)
+![downloads](https://img.shields.io/pypi/dm/pytsmod.svg)
 
 PyTSMod is a open-source library for Time-Scale Modification algorithms in Python 3. PyTSMod contains basic TSM algorithms such as Overlap-Add (OLA), Waveform-Similarity Overlap-Add (WSOLA), Time-Domain Pitch-Synchronous Overlap-Add (TD-PSOLA), and Phase Vocoder (PV-TSM). We are also planning to add more TSM algorithms and pitch shifting algorithms.
+
+![open-issues](https://img.shields.io/github/issues/KAIST-MACLab/pytsmod.svg)
+![closed-issues](https://img.shields.io/github/issues-closed/KAIST-MACLab/pytsmod.svg)
+![open-prs](https://img.shields.io/github/issues-pr/KAIST-MACLab/pytsmod.svg)
+![closed-prs](https://img.shields.io/github/issues-pr-closed/KAIST-MACLab/pytsmod.svg)
 
 The implementation of the algorithms are based on those papers and libraries:
 
@@ -54,7 +62,7 @@ import pytsmod as tsm
 import soundfile as sf  # you can use other audio load packages.
 
 x, sr = sf.read('/FILEPATH/AUDIOFILE.wav')
-x = x
+x = x.T
 x_length = x.shape[-1]  # length of the audio sequence x.
 
 s_fixed = 1.3  # stretch the audio signal 1.3x times.
