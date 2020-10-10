@@ -64,3 +64,5 @@ html_static_path = ['_static']
 
 # -- autodoc option ----------------------------------------------------------
 autodoc_member_order = 'bysource'
+autodoc_mock_imports = ['numpy', 'scipy', 'soundfile', 'librosa']
+
