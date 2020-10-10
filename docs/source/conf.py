@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information -----------------------------------------------------
 
 project = 'PyTSMod'
-copyright = '2020, Sangeon Yong'
+copyright = '2020, MACLab., KAIST'
 author = 'Sangeon Yong'
 
 # The full version, including alpha/beta/rc tags

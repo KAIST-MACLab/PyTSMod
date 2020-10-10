@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; PyTSMod 0.3.1 documentation</title>
+  <title>Installation &mdash; PyTSMod 0.3.1 documentation</title>
   
 
   
@@ -20,7 +20,6 @@
   
 
   
-    
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -35,9 +34,10 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-    <script type="text/javascript" src="_static/searchtools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="PyTSMod" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -64,7 +64,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -83,8 +83,13 @@
             
             
               <p class="caption"><span class="caption-text">Getting started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pypi">PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-with-poetry">Build with Poetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API documentation</span></p>
@@ -137,12 +142,14 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Installation</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -154,23 +161,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pypi">
+<h2>PyPI<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h2>
+<p>PyTSMod is hosted on PyPI. To install, run the following command in your Python environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install pytsmod
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-with-poetry">
+<h2>Build with Poetry<a class="headerlink" href="#build-with-poetry" title="Permalink to this headline">¶</a></h2>
+<p>To build the package manually from the <a class="reference external" href="https://github.com/KAIST-MACLAb/PyTSMod/releases">release archive</a> or repo, <a class="reference external" href="https://python-poetry.org">Poetry</a> is needed. After install Poetry, build wheel file with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ poetry build
+</pre></div>
+</div>
+<p>After build the package, you can install through pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install dist/NAME_OF_PACKAGE.whl
+</pre></div>
+</div>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>To use PyTSMod, Python with version &gt;= 3.6 and following packages are required.</p>
+<ul class="simple">
+<li><p>Numpy (&gt;=1.16.0)</p></li>
+<li><p>Scipy (&gt;=1.0.0)</p></li>
+<li><p>libROSA (&gt;=0.8.0)</p></li>
+<li><p>soundfile (&gt;=0.10.0)</p></li>
+</ul>
+</div>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="PyTSMod" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -210,14 +246,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>
