@@ -1,5 +1,5 @@
-PyTSMod
-===================
+# PyTSMod
+
 [![PyPI](https://img.shields.io/pypi/v/pytsmod.svg)](https://pypi.python.org/pypi/pytsmod)
 [![Build Status](https://img.shields.io/travis/KAIST-MACLab/PyTSMod/main)](https://travis-ci.org/KAIST-MACLab/PyTSMod)
 ![Python](https://img.shields.io/pypi/pyversions/pytsmod.svg)
@@ -7,6 +7,8 @@ PyTSMod
 ![downloads](https://img.shields.io/pypi/dm/pytsmod.svg)
 
 PyTSMod is a open-source library for Time-Scale Modification algorithms in Python 3. PyTSMod contains basic TSM algorithms such as Overlap-Add (OLA), Waveform-Similarity Overlap-Add (WSOLA), Time-Domain Pitch-Synchronous Overlap-Add (TD-PSOLA), and Phase Vocoder (PV-TSM). We are also planning to add more TSM algorithms and pitch shifting algorithms.
+
+Full documentation is available on <https://pytsmod.readthedocs.io>
 
 ![open-issues](https://img.shields.io/github/issues/KAIST-MACLab/pytsmod.svg)
 ![closed-issues](https://img.shields.io/github/issues-closed/KAIST-MACLab/pytsmod.svg)
@@ -45,6 +47,7 @@ $ poetry build
 ### Requirements
 
 To use PyTSMod, Python with version >= 3.6 and following packages are required.
+
 - NumPy (>=1.16.0)
 - SciPy (>=1.0.0)
 - libROSA (>=0.8.0)
@@ -158,7 +161,6 @@ The original audio is from TSM toolbox.
 | - | PyTSMod | - | [wav](https://drive.google.com/file/d/1vxFD5Cj6wS6_tj66DPMmFQfg2JLxgI3j/view?usp=sharing) | [wav](https://drive.google.com/file/d/1BiNkuTmBn_HJAbBLCim8BP3Q7qPAIUzT/view?usp=sharing) | [wav](https://drive.google.com/file/d/1f4dZc51EgIudt8MoCQDvwtbkoTk6svb9/view?usp=sharing) | [wav](https://drive.google.com/file/d/1aPs4ufHBxyahOgPAVj3CbDdEW4elRj85/view?usp=sharing) | [wav](https://drive.google.com/file/d/1mhwNUVUYK2lFIqR8o657uG7wb60b3IWZ/view?usp=sharing) |
 | SingingVoice | TSM Toolbox | [wav](https://www.audiolabs-erlangen.de/content/resources/MIR/TSMtoolbox/SingingVoice_ORIG.wav) | [wav](https://www.audiolabs-erlangen.de/content/resources/MIR/TSMtoolbox/SingingVoice_1.80_OLA.wav) | [wav](https://www.audiolabs-erlangen.de/content/resources/MIR/TSMtoolbox/SingingVoice_1.80_WSOLA.wav) | [wav](https://www.audiolabs-erlangen.de/content/resources/MIR/TSMtoolbox/SingingVoice_1.80_PV.wav) | [wav](https://www.audiolabs-erlangen.de/content/resources/MIR/TSMtoolbox/SingingVoice_1.80_PVpl.wav) | [wav](https://www.audiolabs-erlangen.de/content/resources/MIR/TSMtoolbox/SingingVoice_1.80_HP.wav) |
 | - | PyTSMod | - | [wav](https://drive.google.com/file/d/1HCJwXaHCnACFTCW-Q8lN40N4Oxr-jfmD/view?usp=sharing) | [wav](https://drive.google.com/file/d/1vZ54pQusHWRJs9fggpTOq02vGNTY5bI5/view?usp=sharing) | [wav](https://drive.google.com/file/d/1TP2ZoV028tqFrILhCZmnYvflY-YdM3Bd/view?usp=sharing) | [wav](https://drive.google.com/file/d/1EQotSRP2rma3i1XioJW0998HJLiq_jQV/view?usp=sharing) | [wav](https://drive.google.com/file/d/1npTbI0sjKOEUifSXQbAqluxGRtG0O4t7/view?usp=sharing) |
-
 
 ## References
 
