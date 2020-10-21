@@ -59,7 +59,7 @@ def wsola(x, s, win_type='hann',
     # padding the input audio sequence.
     left_pad = int(win_size // 2 + tolerance)
     right_pad = int(np.ceil(1 / min_fac) * win_size + tolerance)
-    x_padded = np.pad(x, ((0, 0), (left_pad, right_pad)))
+    x_padded = np.pad(x, ((0, 0), (left_pad, right_pad)), 'constant')
 
     aw_pos = aw_pos + tolerance
 
