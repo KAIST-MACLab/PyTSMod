@@ -81,7 +81,7 @@ def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
         output_length = int(np.ceil(x_chan.size * alpha))
 
         pad = int(np.ceil(sr / 100))
-        x_chan = np.pad(x_chan, (pad, pad))
+        x_chan = np.pad(x_chan, (pad, pad), 'constant')
         y_chan = np.zeros(output_length + 2 * pad)  # output signal
 
         tk = pitch_period[0] + 1  # output pitch mark
