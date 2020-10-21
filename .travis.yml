@@ -12,6 +12,6 @@ before_install:
   - pip install poetry
 install:
   - poetry install
-  - pip install -q numpy==NUMPY_VERSION
+  - pip install -q numpy==$NUMPY_VERSION
 script:
   - pytest
