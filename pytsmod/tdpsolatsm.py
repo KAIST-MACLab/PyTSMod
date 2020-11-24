@@ -99,8 +99,8 @@ def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
 
             gr = x_chan[st + pad: en + pad + 1] * win
 
-            ini_gr = round(tk) - pit + pad
-            end_gr = round(tk) + pit + pad
+            ini_gr = int(round(tk)) - pit + pad
+            end_gr = int(round(tk)) + pit + pad
 
             y_chan[ini_gr: end_gr + 1] = y_chan[ini_gr: end_gr + 1] + gr
             ow[ini_gr: end_gr + 1] = ow[ini_gr: end_gr + 1] + win
