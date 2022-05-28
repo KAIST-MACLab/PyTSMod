@@ -8,16 +8,15 @@ license = "GPL-3.0"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.6"
-numpy = "^1.16.0"
-scipy = "^1.0.0"
-soundfile = "^0.10.0"
-librosa = "^0.8"
+python = ">=3.8,<3.11"
+numpy = "^1.20"
+scipy = "^1.8"
+soundfile = "^0.10"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
-flake8 = "^3.8.3"
-numpydoc = "^1.0.0"
+pytest = "^7.0"
+flake8 = "^4.0.1"
+numpydoc = "^1.0"
 
 [tool.poetry.scripts]
 tsmod = 'pytsmod.console:run'

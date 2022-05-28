@@ -22,7 +22,7 @@ def stft(x, ana_hop=2048, win_type='hann', win_size=4096, zero_pad=0, sr=44100,
     zero_pad : int > 0 [scalar]
                the size of the zero pad in the window function.
     sr : int > 0 [scalar]
-         the sample rate of the audio sequence.
+         the sample rate of the audio sequence. Only used for time_frequency_out.
     fft_shift : bool
                 apply circular shift to STFT.
     time_frequency_out : bool
