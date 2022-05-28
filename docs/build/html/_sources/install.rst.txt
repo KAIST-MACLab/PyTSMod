@@ -19,9 +19,8 @@ $ pip install dist/NAME_OF_PACKAGE.whl
 
 Requirements
 ~~~~~~~~~~~~
-To use PyTSMod, Python with version >= 3.6 and following packages are required.
+To use PyTSMod, Python with version >= 3.8 and following packages are required.
 
-- Numpy (>=1.16.0)
-- Scipy (>=1.0.0)
-- libROSA (>=0.8.0)
+- Numpy (>=1.20.0)
+- Scipy (>=1.8.0)
 - soundfile (>=0.10.0)
