@@ -1,68 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Tutorial &mdash; PyTSMod 0.3.3 documentation</title>
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial &mdash; PyTSMod 0.3.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pytsmod" href="pytsmod.html" />
     <link rel="prev" title="Installation" href="install.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> PyTSMod
-          
-
-          
+            <a href="index.html" class="icon icon-home"> PyTSMod
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -70,19 +36,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting started</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
@@ -99,214 +54,127 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">API documentation</span></p>
+<p class="caption" role="heading"><span class="caption-text">API documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pytsmod.html">pytsmod</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">utils</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">PyTSMod</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Tutorial</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="tutorial">
-<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="using-ola-and-wsola-and-pv-tsm">
-<h2>Using OLA and WSOLA, and PV-TSM<a class="headerlink" href="#using-ola-and-wsola-and-pv-tsm" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline"></a></h1>
+<section id="using-ola-and-wsola-and-pv-tsm">
+<h2>Using OLA and WSOLA, and PV-TSM<a class="headerlink" href="#using-ola-and-wsola-and-pv-tsm" title="Permalink to this headline"></a></h2>
 <p>OLA, WSOLA, and PV-TSM can be imported as module to be used directly in Python. To get the result easily, all you need is just two parameters, the input audio sequence x and the time stretching factor s. Here’s a minimal example:</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pytsmod</span> <span class="k">as</span> <span class="nn">tsm</span>
-<span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>  <span class="c1"># you can use other audio load packages.</span>
-
-<span class="n">x</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/FILEPATH/AUDIOFILE.wav&#39;</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># if the input is multichannel audio, it is recommended to use the shape (num_channels, audio_len)</span>
-<span class="n">x_length</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="n">s_fixed</span> <span class="o">=</span> <span class="mf">1.3</span>  <span class="c1"># stretch the audio signal 1.3x times.</span>
-<span class="n">s_ap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x_length</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_length</span><span class="p">,</span> <span class="n">x_length</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">]])</span>  <span class="c1"># double the first half of the audio only and preserve the other half.</span>
-
-<span class="n">x_s_fixed</span> <span class="o">=</span> <span class="n">tsm</span><span class="o">.</span><span class="n">wsola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">s_fixed</span><span class="p">)</span>
-<span class="n">x_s_ap</span> <span class="o">=</span> <span class="n">tsm</span><span class="o">.</span><span class="n">wsola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">s_ap</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pytsmod</span> <span class="k">as</span> <span class="nn">tsm</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>  <span class="c1"># you can use other audio load packages.</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">x</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/FILEPATH/AUDIOFILE.wav&#39;</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># if the input is multichannel audio, it is recommended to use the shape (num_channels, audio_len)</span>
+<span class="linenos"> 7</span><span class="n">x_length</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">s_fixed</span> <span class="o">=</span> <span class="mf">1.3</span>  <span class="c1"># stretch the audio signal 1.3x times.</span>
+<span class="linenos">10</span><span class="n">s_ap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x_length</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_length</span><span class="p">,</span> <span class="n">x_length</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">]])</span>  <span class="c1"># double the first half of the audio only and preserve the other half.</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="n">x_s_fixed</span> <span class="o">=</span> <span class="n">tsm</span><span class="o">.</span><span class="n">wsola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">s_fixed</span><span class="p">)</span>
+<span class="linenos">13</span><span class="n">x_s_ap</span> <span class="o">=</span> <span class="n">tsm</span><span class="o">.</span><span class="n">wsola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">s_ap</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
-<div class="section" id="time-stretching-factor-s">
-<h3>Time stretching factor s<a class="headerlink" href="#time-stretching-factor-s" title="Permalink to this headline">¶</a></h3>
+</div>
+<section id="time-stretching-factor-s">
+<h3>Time stretching factor s<a class="headerlink" href="#time-stretching-factor-s" title="Permalink to this headline"></a></h3>
 <p>Time stretching factor s can either be a constant value (alpha) or an 2 x n array of anchor points which contains the sample points of the input signal in the first row and the sample points of the output signal in the second row.</p>
-</div>
-</div>
-<div class="section" id="using-td-psola">
-<h2>Using TD-PSOLA<a class="headerlink" href="#using-td-psola" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="using-td-psola">
+<h2>Using TD-PSOLA<a class="headerlink" href="#using-td-psola" title="Permalink to this headline"></a></h2>
 <p>When using TD-PSOLA, the estimated pitch information of the source you want to modify is needed. Also, you should know the hop size and frame length of the pitch tracking algorithm you used. Here’s a minimal example:</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pytsmod</span> <span class="k">as</span> <span class="nn">tsm</span>
-<span class="kn">import</span> <span class="nn">crepe</span>  <span class="c1"># you can use other pitch tracking algorithms.</span>
-<span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>  <span class="c1"># you can use other audio load packages.</span>
-
-<span class="n">x</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/FILEPATH/AUDIOFILE.wav&#39;</span><span class="p">)</span>
-
-<span class="n">_</span><span class="p">,</span> <span class="n">f0_crepe</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">crepe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">viterbi</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="n">x_double_stretched</span> <span class="o">=</span> <span class="n">tsm</span><span class="o">.</span><span class="n">tdpsola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">f0_crepe</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">p_hop_size</span><span class="o">=</span><span class="mi">441</span><span class="p">,</span> <span class="n">p_win_size</span><span class="o">=</span><span class="mi">1470</span><span class="p">)</span>  <span class="c1"># hop_size and frame_length for CREPE step_size=10 with sr=44100</span>
-<span class="n">x_3keyup</span> <span class="o">=</span> <span class="n">tsm</span><span class="o">.</span><span class="n">tdpsola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">f0_crepe</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">12</span><span class="p">),</span> <span class="n">p_hop_size</span><span class="o">=</span><span class="mi">441</span><span class="p">,</span> <span class="n">p_win_size</span><span class="o">=</span><span class="mi">1470</span><span class="p">)</span>
-<span class="n">x_3keydown</span> <span class="o">=</span> <span class="n">tsm</span><span class="o">.</span><span class="n">tdpsola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">f0_crepe</span><span class="p">,</span> <span class="n">target_f0</span><span class="o">=</span><span class="n">f0_crepe</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="mi">12</span><span class="p">),</span> <span class="n">p_hop_size</span><span class="o">=</span><span class="mi">441</span><span class="p">,</span> <span class="n">p_win_size</span><span class="o">=</span><span class="mi">1470</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">pytsmod</span> <span class="k">as</span> <span class="nn">tsm</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">crepe</span>  <span class="c1"># you can use other pitch tracking algorithms.</span>
+<span class="linenos"> 4</span><span class="kn">import</span> <span class="nn">soundfile</span> <span class="k">as</span> <span class="nn">sf</span>  <span class="c1"># you can use other audio load packages.</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">x</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/FILEPATH/AUDIOFILE.wav&#39;</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="n">_</span><span class="p">,</span> <span class="n">f0_crepe</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">crepe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">viterbi</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">x_double_stretched</span> <span class="o">=</span> <span class="n">tsm</span><span class="o">.</span><span class="n">tdpsola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">f0_crepe</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">p_hop_size</span><span class="o">=</span><span class="mi">441</span><span class="p">,</span> <span class="n">p_win_size</span><span class="o">=</span><span class="mi">1470</span><span class="p">)</span>  <span class="c1"># hop_size and frame_length for CREPE step_size=10 with sr=44100</span>
+<span class="linenos">11</span><span class="n">x_3keyup</span> <span class="o">=</span> <span class="n">tsm</span><span class="o">.</span><span class="n">tdpsola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">f0_crepe</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">12</span><span class="p">),</span> <span class="n">p_hop_size</span><span class="o">=</span><span class="mi">441</span><span class="p">,</span> <span class="n">p_win_size</span><span class="o">=</span><span class="mi">1470</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">x_3keydown</span> <span class="o">=</span> <span class="n">tsm</span><span class="o">.</span><span class="n">tdpsola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">f0_crepe</span><span class="p">,</span> <span class="n">target_f0</span><span class="o">=</span><span class="n">f0_crepe</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="mi">12</span><span class="p">),</span> <span class="n">p_hop_size</span><span class="o">=</span><span class="mi">441</span><span class="p">,</span> <span class="n">p_win_size</span><span class="o">=</span><span class="mi">1470</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
-<div class="section" id="time-stretching-factor-alpha">
-<h3>Time stretching factor alpha<a class="headerlink" href="#time-stretching-factor-alpha" title="Permalink to this headline">¶</a></h3>
+</div>
+<section id="time-stretching-factor-alpha">
+<h3>Time stretching factor alpha<a class="headerlink" href="#time-stretching-factor-alpha" title="Permalink to this headline"></a></h3>
 <p>In this version, TD-PSOLA only supports the fixed time stretching factor alpha.</p>
-</div>
-<div class="section" id="pitch-shifting-factor-beta-and-target-f0">
-<h3>Pitch shifting factor beta and target_f0<a class="headerlink" href="#pitch-shifting-factor-beta-and-target-f0" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="pitch-shifting-factor-beta-and-target-f0">
+<h3>Pitch shifting factor beta and target_f0<a class="headerlink" href="#pitch-shifting-factor-beta-and-target-f0" title="Permalink to this headline"></a></h3>
 <p>You can modify pitch of the audio sequence in two ways. The first one is beta, which is the fixed pitch shifting factor. The other one is target_f0, which supports target pitch sequence you want to convert. You cannot use both of the parameters.</p>
-</div>
-</div>
-<div class="section" id="command-line-interface">
-<h2>Command-Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="command-line-interface">
+<h2>Command-Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline"></a></h2>
 <p>From version 0.3.0, this package includes a command-line tool named <code class="docutils literal notranslate"><span class="pre">tsmod</span></code>, which can create the result file easily from a shell. To generate the WSOLA result of <code class="docutils literal notranslate"><span class="pre">input.wav</span></code> with stretching factor 1.3 and save to <code class="docutils literal notranslate"><span class="pre">output.wav</span></code>, please run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tsmod wsola input.wav output.wav 1.3  # ola, wsola, pv, pv_int are available.
 </pre></div>
 </div>
 <p>Currently, OLA, WSOLA, and Phase Vocoder(PV) are supported. TD-PSOLA is excluded due to the difficulty of sending extracted pitch data to TD-PSOLA. Also, non-linear TSM is not supported in command-line.</p>
 <p>For more information, use <code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code> command to see the detailed usage of <code class="docutils literal notranslate"><span class="pre">tsmod</span></code>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="pytsmod.html" class="btn btn-neutral float-right" title="pytsmod" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pytsmod.html" class="btn btn-neutral float-right" title="pytsmod" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2020, MACLab., KAIST
-
-    </p>
+    <p>&#169; Copyright 2020, MACLab., KAIST.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
