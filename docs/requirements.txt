@@ -1,1 +1,2 @@
-numpydoc >= 1.0.0
+numpydoc >= 1.3.0
+furo >= 2022.04.07
