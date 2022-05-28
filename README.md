@@ -1,7 +1,7 @@
 # PyTSMod
 
 [![PyPI](https://img.shields.io/pypi/v/pytsmod.svg)](https://pypi.python.org/pypi/pytsmod)
-[![Build Status](https://img.shields.io/travis/KAIST-MACLab/PyTSMod/main)](https://travis-ci.org/KAIST-MACLab/PyTSMod)
+[![Build Status](https://img.shields.io/github/workflow/status/KAIST-MACLab/PyTSMod/Python%20package)](https://github.com/KAIST-MACLab/PyTSMod/actions/workflows/python-package.yml)
 ![Python](https://img.shields.io/pypi/pyversions/pytsmod.svg)
 ![license](https://img.shields.io/github/license/KAIST-MACLab/PyTSMod.svg)
 ![downloads](https://img.shields.io/pypi/dm/pytsmod.svg)
@@ -46,11 +46,10 @@ $ poetry build
 
 ### Requirements
 
-To use PyTSMod, Python with version >= 3.6 and following packages are required.
+To use the latest version of PyTSMod, Python with version >= 3.8 and following packages are required.
 
-- NumPy (>=1.16.0)
-- SciPy (>=1.0.0)
-- libROSA (>=0.8.0)
+- NumPy (>=1.20.0)
+- SciPy (>=1.8.0)
 - soundfile (>=0.10.0)
 
 ## Using PyTSMod
