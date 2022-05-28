@@ -12,7 +12,6 @@ python = "^3.6"
 numpy = "^1.16.0"
 scipy = "^1.0.0"
 soundfile = "^0.10.0"
-librosa = "^0.8"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
