@@ -17,7 +17,6 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.6", "3.7", "3.8", "3.9", "3.10"]
-        numpy-version: ["1.16.6", "latest"]
 
     steps:
     - uses: actions/checkout@v3
@@ -31,7 +30,6 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install poetry flake8 pytest
         poetry install
-        poetry add numpy@${{ matrix.numpy-version }}
 #        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
