@@ -49,6 +49,9 @@ def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
     elif beta is None:
         beta = 1
 
+    min_f0 = src_f0[np.nonzero(src_f0)].min()
+    pad_len = int(np.ceil(sr / min_f0))
+
     n_chan = x.shape[0]
     output_length = int(np.ceil(x.shape[1] * alpha))
     y = np.zeros((n_chan, output_length))
@@ -80,9 +83,9 @@ def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
 
         output_length = int(np.ceil(x_chan.size * alpha))
 
-        pad = int(np.ceil(sr / 100))
-        x_chan = np.pad(x_chan, (pad, pad), 'constant')
-        y_chan = np.zeros(output_length + 2 * pad)  # output signal
+        # pad = int(np.ceil(sr / 100))
+        x_chan = np.pad(x_chan, (pad_len, pad_len), 'constant')
+        y_chan = np.zeros(output_length + 2 * pad_len)  # output signal
 
         tk = pitch_period[0] + 1  # output pitch mark
         ow = np.zeros(y_chan.shape)
@@ -97,10 +100,10 @@ def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
             st = pm_chan[i] - pit
             en = pm_chan[i] + pit
 
-            gr = x_chan[st + pad: en + pad + 1] * win
+            gr = x_chan[st + pad_len: en + pad_len + 1] * win
 
-            ini_gr = int(round(tk)) - pit + pad
-            end_gr = int(round(tk)) + pit + pad
+            ini_gr = int(round(tk)) - pit + pad_len
+            end_gr = int(round(tk)) + pit + pad_len
 
             y_chan[ini_gr: end_gr + 1] = y_chan[ini_gr: end_gr + 1] + gr
             ow[ini_gr: end_gr + 1] = ow[ini_gr: end_gr + 1] + win
@@ -109,7 +112,7 @@ def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
         ow[ow < 1e-3] = 1
 
         y_chan = y_chan / ow
-        y_chan = y_chan[pad:]
+        y_chan = y_chan[pad_len:]
         y_chan = y_chan[: output_length]
         y[c, :] = y_chan
 
@@ -167,11 +170,11 @@ def _find_pitch_marks(x, sr, f0, hop_size, win_size):
          sample rate of the input audio sequence.
     f0 : numpy.ndarray [shape=(num_freqs)]
          the fundamental frequency contour of the input audio sequence.
-    p_hop_size : int > 0 [scalar]
+    hop_size : int > 0 [scalar]
                the hop size of f0 contour (in samples).
-    p_win_size : int > 0 [scalar]
-                   the window size of pitch tracking algorithm
-                   you used. (in samples).
+    win_size : int > 0 [scalar]
+               the window size of pitch tracking algorithm
+               you used. (in samples).
 
     Returns
     -------
