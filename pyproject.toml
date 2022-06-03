@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pytsmod"
-version = "0.3.4"
+version = "0.3.5"
 description = "An open-source Python library for audio time-scale modification."
 authors = ["Sangeon Yong <koragon2@kaist.ac.kr>"]
 
