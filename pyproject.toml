@@ -17,6 +17,8 @@ soundfile = "^0.10"
 pytest = "^7.0"
 flake8 = "^4.0.1"
 numpydoc = "^1.0"
+recommonmark = "^0.7.1"
+furo = "^2023.9.10"
 
 [tool.poetry.scripts]
 tsmod = 'pytsmod.console:run'
