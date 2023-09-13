@@ -53,7 +53,7 @@ def stft(x, ana_hop=2048, win_type='hann', win_size=4096, zero_pad=0, sr=44100,
         num_frames = ana_hop.size
         win_pos = ana_hop[0:num_frames]
 
-    spec = np.zeros((win_size // 2 + 1, num_frames), dtype=np.complex)
+    spec = np.zeros((win_size // 2 + 1, num_frames), dtype=np.complex128)
     for i in range(num_frames):
         xi = x_padded[win_pos[i]: win_pos[i] + win_size] * win
 

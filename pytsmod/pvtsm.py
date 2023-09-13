@@ -60,7 +60,7 @@ def phase_vocoder(x, s, win_type='sin', win_size=2048, syn_hop_size=512,
         X = stft(x_chan, ana_hop=aw_pos, win_type=win_type,
                  win_size=win_size, zero_pad=zero_pad, fft_shift=fft_shift)
 
-        Y = np.zeros(X.shape, dtype=np.complex)
+        Y = np.zeros(X.shape, dtype=np.complex128)
         Y[:, 0] = X[:, 0]  # phase initialization
 
         N = win_size + zero_pad
