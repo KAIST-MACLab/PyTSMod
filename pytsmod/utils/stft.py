@@ -53,7 +53,7 @@ def stft(x, ana_hop=2048, win_type='hann', win_size=4096, zero_pad=0, sr=44100,
         num_frames = ana_hop.size
         win_pos = ana_hop[0:num_frames]
 
-    spec = np.zeros((win_size // 2 + 1, num_frames), dtype=np.complex)
+    spec = np.zeros((win_size // 2 + 1, num_frames), dtype=np.complex128)
     for i in range(num_frames):
         xi = x_padded[win_pos[i]: win_pos[i] + win_size] * win
 
@@ -180,7 +180,7 @@ def lsee_mstft(X, syn_hop, win_type, win_size, zero_pad, fft_shift,
         if restore_energy:
             xi_energy = np.sum(abs(xi))
             xiw_energy = np.sum(abs(xiw))
-            xiw = xiw * (xi_energy / (xiw_energy + np.finfo(np.float).eps))
+            xiw = xiw * (xi_energy / (xiw_energy + np.finfo(np.float64).eps))
 
         x[win_pos[i]: win_pos[i] + win_len] += xiw
 

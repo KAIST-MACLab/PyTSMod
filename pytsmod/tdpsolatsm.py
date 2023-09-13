@@ -50,7 +50,7 @@ def tdpsola(x, sr, src_f0, tgt_f0=None, alpha=1, beta=None,
         beta = 1
 
     min_f0 = src_f0[np.nonzero(src_f0)].min()
-    pad_len = int(np.ceil(sr / min_f0))
+    pad_len = int(np.ceil(sr / min_f0)) + p_win_size
 
     n_chan = x.shape[0]
     output_length = int(np.ceil(x.shape[1] * alpha))
