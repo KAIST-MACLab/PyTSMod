@@ -180,7 +180,7 @@ def lsee_mstft(X, syn_hop, win_type, win_size, zero_pad, fft_shift,
         if restore_energy:
             xi_energy = np.sum(abs(xi))
             xiw_energy = np.sum(abs(xiw))
-            xiw = xiw * (xi_energy / (xiw_energy + np.finfo(np.float).eps))
+            xiw = xiw * (xi_energy / (xiw_energy + np.finfo(np.float64).eps))
 
         x[win_pos[i]: win_pos[i] + win_len] += xiw
 
