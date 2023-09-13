@@ -6,7 +6,7 @@
 ![license](https://img.shields.io/github/license/KAIST-MACLab/PyTSMod.svg)
 ![downloads](https://img.shields.io/pypi/dm/pytsmod.svg)
 
-PyTSMod is a open-source library for Time-Scale Modification algorithms in Python 3. PyTSMod contains basic TSM algorithms such as Overlap-Add (OLA), Waveform-Similarity Overlap-Add (WSOLA), Time-Domain Pitch-Synchronous Overlap-Add (TD-PSOLA), and Phase Vocoder (PV-TSM). We are also planning to add more TSM algorithms and pitch shifting algorithms.
+PyTSMod is an open-source library for Time-Scale Modification algorithms in Python 3. PyTSMod contains basic TSM algorithms such as Overlap-Add (OLA), Waveform-Similarity Overlap-Add (WSOLA), Time-Domain Pitch-Synchronous Overlap-Add (TD-PSOLA), and Phase Vocoder (PV-TSM). We are also planning to add more TSM algorithms and pitch shifting algorithms.
 
 Full documentation is available on <https://pytsmod.readthedocs.io>
 
