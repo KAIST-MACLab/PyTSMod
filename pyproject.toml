@@ -10,7 +10,7 @@ readme = "README.md"
 python = ">=3.8,<3.13"
 numpy = "^1.20"
 scipy = "^1.8"
-soundfile = "^0.10"
+soundfile = ">=0.10"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.0"
