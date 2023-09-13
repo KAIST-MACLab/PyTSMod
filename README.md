@@ -1,7 +1,7 @@
 # PyTSMod
 
 [![PyPI](https://img.shields.io/pypi/v/pytsmod.svg)](https://pypi.python.org/pypi/pytsmod)
-[![Build Status](https://img.shields.io/github/workflow/status/KAIST-MACLab/PyTSMod/Python%20package)](https://github.com/KAIST-MACLab/PyTSMod/actions/workflows/python-package.yml)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/KAIST-MACLab/PyTSMod/.github%2Fworkflows%2Fpython-package.yml)](https://github.com/KAIST-MACLab/PyTSMod/actions/workflows/python-package.yml)
 ![Python](https://img.shields.io/pypi/pyversions/pytsmod.svg)
 ![license](https://img.shields.io/github/license/KAIST-MACLab/PyTSMod.svg)
 ![downloads](https://img.shields.io/pypi/dm/pytsmod.svg)
