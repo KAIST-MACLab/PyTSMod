@@ -37,14 +37,6 @@ pytsmod.pvtsm module
    :undoc-members:
    :show-inheritance:
 
-pytsmod.solatsm module
-----------------------
-
-.. automodule:: pytsmod.solatsm
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 pytsmod.tdpsolatsm module
 -------------------------
 
